@@ -5,7 +5,11 @@ applications:
   - route: registration-pal-DJ.apps.dev.pcf-aws.com
   memory: 1G
   instances: 1
+  disk_quota: 500M
   env:
+    REGISTRATION_SERVER_ENDPOINT:  http://registration-pal-DJ.apps.dev.pcf-aws.com
+    JAVA_OPTS: '-XX:MaxMetaspaceSize=80780K -Xss512k -Xmx200M -XX:ReservedCodeCacheSize=16M -XX:MaxDirectMemorySize=16M'
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
   services:
   - tracker-registration-database
+  - tracker-service-registry
